@@ -6,9 +6,15 @@ const logger = require('morgan');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const indexRouter = require('./routes/index');
-const usersRouter = require('./routes/users');
+// const usersRouter = require('./routes/albums');
 
 const app = express();
+// used to link to mongo database
+mongoose.connect('mongodb://27017/music');
+mongoose.Promise = global.Promise;
+const db = require('./models');
+
+// db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -26,8 +32,9 @@ app.use(bodyParser.urlencoded({extended: false}));
 //set static path
 app.use(express.static(path.join(__dirname, 'public')));
 
+// sends request for this url path to models/index.js
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -45,8 +52,8 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
-app.listen(3000,function(){
-  console.log('Server is serving on 3000...');
+app.listen(27017,function(){
+  console.log('Server is serving on Port 27017! ');
 })
 
 module.exports = app;

@@ -1,14 +1,19 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= title %></title>
+    <title></title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
   <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
-    <div id="album">
-      
+    <h1></h1>
+    <p>Welcome to Tunely</p>
+    <div id="albumDiv">
+        <h1>Album Title: <span id="albumTitle"></span></h1>
+        <h2>Artist Name: <span id="artistName"></span></h2>
+        <h2>Album Cover: <span id="albumCover"></span></h2>
+        <h3>Release Date: <span id="releaseDate"></span></h3>
     </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="javascripts/app.js"></script>
   </body>
 </html>
